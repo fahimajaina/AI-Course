@@ -30,8 +30,8 @@ const INITIAL_BOARD = [
     ['wr', 'wn', 'wb', 'wq', 'wk', 'wb', 'wn', 'wr']
 ];
 
-// Game state
-let board = [];
+// Holds current game state
+let board = [];  
 let selectedPiece = null;
 let currentPlayer = 'white';
 let validMoves = [];
@@ -62,7 +62,7 @@ function renderBoard() {
         for (let col = 0; col < 8; col++) {
             const square = document.createElement('div');
             square.className = `square ${(row + col) % 2 === 0 ? 'white' : 'black'}`;
-            square.dataset.row = row;
+            square.dataset.row = row;  // adds custom data attributes to each square (data-row and data-col)
             square.dataset.col = col;
 
             if (board[row][col]) {  // If there's a piece on this square
@@ -72,8 +72,8 @@ function renderBoard() {
                 square.textContent = PIECES[color][type];
             }
 
-            if (selectedPiece && selectedPiece.row === row && selectedPiece.col === col) {
-                square.classList.add('selected');
+            if (selectedPiece && selectedPiece.row === row && selectedPiece.col === col) { //If this square is the currently selected piece
+                square.classList.add('selected'); //highlight  selected class
             }
 
             if (validMoves.some(move => move.row === row && move.col === col)) {

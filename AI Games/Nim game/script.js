@@ -26,7 +26,11 @@ function aiMove() {
   const move = bestMove(pile);
   pile -= move;
   updateDisplay();
-  checkGameOver("AI");
+  
+  if (pile <= 0) {
+    checkGameOver("AI");
+    return;  // End the game if AI wins
+  }
 
   if (pile > 0) {
     isPlayerTurn = true;
